@@ -56,6 +56,12 @@ window.addEventListener('DOMContentLoaded', () => {
 			second: second,
 		};
 	}
+	//функция для приписывания нулей
+	function getZero(num) {
+		if (num >= 0 && num < 10) {
+			return `0${num}`;
+		} else return num;
+	}
 
 	function setClock(selector, endTime) {
 		const timer = document.querySelector(selector),
@@ -67,10 +73,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		function updateClock() {
 			const t = getTimeRemaining(endTime);
-			days.innerHTML = t.days;
-			hours.innerHTML = t.hours;
-			minutes.innerHTML = t.minutes;
-			second.innerHTML = t.second;
+			days.innerHTML = getZero(t.days);
+			hours.innerHTML = getZero(t.hours);
+			minutes.innerHTML = getZero(t.minutes);
+			second.innerHTML = getZero(t.second);
+			//после того как отсчет дойдет до нуля, счет остановится.
 
 			if (t.total <= 0) {
 				clearInterval(timeInterval);
@@ -128,7 +135,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			document.documentElement.scrollHeight - 1
 		) {
 			openModal();
-			window.removeEventListener('scroll', showModalByScroll);
+			//window.removeEventListener('scroll', showModalByScroll);
 		}
 	}
 
