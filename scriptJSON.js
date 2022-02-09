@@ -236,10 +236,17 @@ window.addEventListener('DOMContentLoaded', () => {
 			const request = new XMLHttpRequest();
 			request.open('POST', 'server.php'); //настраиваем запрос
 
-			//request.setRequestHeader('Content-type', 'multipart/form-data'); //настраиваем заголовки(что именно должно предти на сервер) здесь заголовок устанавливать не нужно
+			request.setRequestHeader('Content-type', 'application/json'); //настраиваем заголовки(что именно должно предти на сервер) здесь заголовок устанавливать не нужно
 			const formData = new FormData(form); //отправка не в формате JSON//все данные которые заполнит пользователь, отправятся на сервер
 
-			request.send(formData); //отправка формы, которую заполнил пользователь
+			const object = {};
+			formData.forEach(function (value, key) {
+				object[key] = value;
+			});
+
+			const json = JSON.stringify(object);
+
+			request.send(json); //отправка формы, которую заполнил пользователь
 
 			request.addEventListener('load', () => {
 				if (request.status === 200) {
