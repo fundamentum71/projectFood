@@ -22,5 +22,11 @@
 			"price": 21
 		}
 	],
-	"requests": []
+	"requests": [
+		{
+			"name": "Aleksandr",
+			"phone": "+79533112097",
+			"id": 1
+		}
+	]
 }
