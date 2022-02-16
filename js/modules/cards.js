@@ -1,3 +1,5 @@
+import { getResource } from '../services/services';
+
 function cards() {
 	// Используем классы для создание карточек меню
 
@@ -58,4 +60,4 @@ function cards() {
 	});
 }
 
-module.exports = cards;
+export default cards;
